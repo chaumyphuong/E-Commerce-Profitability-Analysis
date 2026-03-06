@@ -21,6 +21,9 @@ BrightCart is an online retailer selling products across 8 categories through th
 - Excel
 
 ## Introduce steps
+**Workflow**
+Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) -> SQL Analysis -> Dashboard
+
 ### 1. Import and Explore
 - Load all three CSVs.
 - Verify that order-level costs add up correctly (product cost + shipping + fees = total costs).
@@ -126,4 +129,3 @@ BrightCart is an online retailer selling products across 8 categories through th
 
 ## 3. Data Modeling
 ### ERD
-
