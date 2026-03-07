@@ -129,3 +129,93 @@ Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) ->
 
 ## 3. Data Modeling
 ### ERD
+
+### Entities description
+**dim_order**
+
+**Entity Description**: `dim_order` stores **order-level information**. Each record represents a single order and provides contextual details such as the order date and region. This dimension enables analysis of sales performance across time and geographic regions.
+
+| Attribute     | Description                                |
+| ------------- | ------------------------------------------ |
+| order_id (PK) | Unique identifier for each order           |
+| order_date    | Date when the order was placed             |
+| region        | Geographic region where the order was made |
+
+
+**dim_customer**
+
+**Entity Description**:
+`dim_customer` represents the customer dimension. Each record corresponds to a unique customer and allows sales and behavioral analysis at the customer level, such as identifying purchasing patterns and customer value.
+
+| Attribute        | Description                         |
+| ---------------- | ----------------------------------- |
+| customer_id (PK) | Unique identifier for each customer |
+
+**dim_products**
+
+**Entity Description**:
+
+`dim_products` contains descriptive information about the products sold. It allows analysts to evaluate sales performance by product, category, supplier, and other product attributes.
+
+| Attribute              | Description                                           |
+| ---------------------- | ----------------------------------------------------- |
+| product_id (PK)        | Unique identifier for each product                    |
+| supplier               | Supplier providing the product                        |
+| category               | Main product category                                 |
+| sub_category           | Subcategory within the main category                  |
+| product_name           | Name of the product                                   |
+| unit_cost              | Cost incurred to acquire or produce the product       |
+| selling_price          | Price at which the product is sold                    |
+| shipping_cost_per_unit | Shipping cost associated with one unit of the product |
+| weight_lbs             | Product weight in pounds                              |
+
+**fact_orders_details**
+
+**Entity Description**: 
+`fact_orders_details` is the central fact table that records **transaction-level sales data**. Each record represents a product purchased within an order. This table contains key metrics such as revenue, costs, and profit, enabling detailed sales and profitability analysis.
+
+| Attribute        | Description                                       |
+| ---------------- | ------------------------------------------------- |
+| order_id (FK)    | Reference to the order in dim_order               |
+| customer_id (FK) | Reference to the customer in dim_customer         |
+| product_id (FK)  | Reference to the product in dim_products          |
+| payment_method   | Method used to complete the payment               |
+| items_ordered    | Number of product units ordered                   |
+| gross_revenue    | Total revenue before discounts and costs          |
+| discount_pct     | Percentage discount applied                       |
+| discount_amount  | Total discount value applied to the order         |
+| shipping_cost    | Shipping cost for the order                       |
+| platform_fee     | Fee charged by the sales platform                 |
+| transaction_fee  | Payment processing fee                            |
+| returned         | Indicator showing whether the item was returned   |
+| refund_amount    | Amount refunded to the customer                   |
+| net_revenue      | Revenue after discounts and refunds               |
+| total_costs      | Total operational costs associated with the order |
+| profit           | Net profit generated from the order               |
+
+**dim_platform**
+
+**Entity Description**:
+`dim_platform` stores information about marketing platforms used for advertising campaigns. It allows marketing performance to be analyzed by advertising platform.
+
+| Attribute     | Description                                                     |
+| ------------- | --------------------------------------------------------------- |
+| platform (PK) | Name of the marketing platform (e.g., Google, Facebook, TikTok) |
+
+**fact_marketing**
+
+**Entity Description**:
+`fact_marketing` records aggregated marketing performance metrics by platform and month. It enables analysis of advertising efficiency, campaign effectiveness, and return on investment across different marketing channels.
+
+| Attribute          | Description                                  |
+| ------------------ | -------------------------------------------- |
+| platform (FK)      | Reference to the marketing platform          |
+| month              | Month of the marketing campaign              |
+| spend              | Total marketing spend during the month       |
+| impressions        | Number of times the ad was displayed         |
+| clicks             | Number of ad clicks                          |
+| conversions        | Number of successful conversions generated   |
+| revenue_attributed | Revenue attributed to the marketing campaign |
+| cpc                | Cost per click                               |
+| cpa                | Cost per acquisition                         |
+| roas               | Return on ad spend                           |
