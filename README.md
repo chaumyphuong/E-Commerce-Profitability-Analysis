@@ -219,3 +219,200 @@ Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) ->
 | cpc                | Cost per click                               |
 | cpa                | Cost per acquisition                         |
 | roas               | Return on ad spend                           |
+
+## 4. Visualisation and Insight
+### Overview Dashboard (Image 'Overview')
+#### Key metrics
+* Total Orders: 2K
+* Customers: 734
+* Revenue: 236.88K
+* Average Order Value: 118.44
+* ROAS: 2.29K 
+
+#### Profit Margin by Category
+* Home & Kitchen has the highest profit margin (~33%).
+* Food & Beverage and Electronics also generate strong margins (~29% and ~28%).
+* Sports and Toys have noticeably lower margins (~22%).
+* Household and daily-use products have stable demand and healthy margins.
+* Electronics generate strong revenue but higher logistics or cost structures reduce margin.
+
+**Recommendation**
+* Increase promotion for Home & Kitchen and Food & Beverage.
+* Optimize supplier cost or shipping for Electronics and Sports.
+
+#### Profit per Order by Channel
+- Mobile App generates the highest profitability per order, while Marketplace produces the lowest.
+* Marketplace platforms charge commission fees.
+* Mobile users tend to be more loyal and repeat customers.
+
+**Recommendation**
+* Invest in mobile-app growth strategies
+* Reduce dependency on marketplace channels
+
+#### ROAS by Month and Platform
+- ROAS fluctuates significantly across months and platforms.
+* Influencer campaigns often produce high ROAS spikes
+* Some platforms show unstable performance month-to-month
+- Marketing effectiveness depends heavily on: campaign timing, platform selection
+
+**Recommendation**
+* Allocate more budget to consistently high-performing platforms
+* Reduce spend during low-ROAS months
+
+#### Return Rate by Category
+
+* **Highest return categories:** Electronics (~24%), Clothing (~16%)
+* **Lowest return categories:** Toys (~5%)
+* **High returns often occur in:** size-sensitive items, complex products, high-price items
+
+**Recommendation**
+* Improve product descriptions
+* add size guides
+* improve product images
+- Reducing returns can significantly increase profit margins
+
+### Marketing Performance Dashboard (Image 'Marketing Performance')
+#### Key metrics:
+* Marketing Spend: 503K
+* Conversions: 112K
+* Revenue from marketing: 12.75M 
+
+#### Spend vs Revenue Trend
+- Some months generate very high revenue relative to spend. (March and September spikes)
+- These months likely include: seasonal campaigns, promotional events, holiday sales
+
+**Recommendation**
+- Increase marketing spend during historically high-ROI months.
+
+#### Platform Performance
+* Facebook Ads and Influencer marketing generate the highest conversions.
+* Email marketing produces very few conversions relative to effort.
+- Email campaigns might: target inactive audiences, lack personalization
+
+**Recommendation**
+* Improve segmentation for email marketing
+* Prioritize social advertising channels
+
+#### Marketing Funnel
+* Impressions: 76.59M
+* Clicks: 2.25M
+* Conversions: 0.11M
+- Major drop-off occurs between: clicks, conversions
+- Possible causes: weak landing pages, complicated checkout process, poor product pages
+
+**Recommendation**
+- Improve: landing page UX, checkout speed, mobile optimization
+
+#### Revenue by Marketing Platform
+
+* **Highest revenue contributors:** Email Marketing, Influencer Marketing, Google Ads
+- Email generates high revenue but also requires very high spending, making efficiency lower.
+
+**Recommendation**
+- Focus on: Influencer, Google Ads, Instagram Ads
+- These platforms provide better ROAS efficiency.
+
+### Product & Sales Detail Dashboard (Image 'Product & Sales Detail Dashboard')
+#### Key metrics:
+* Net Revenue: 236.88K
+* Profit: 56.54K
+* Return Rate: 7% 
+
+#### Top Revenue Categories
+* **Leading categories:** Electronics, Home & Kitchen, Food & Beverage
+- These categories drive the majority of total revenue.
+
+**Recommendation**
+- Increase: inventory, promotions bundles
+
+#### Revenue by Payment Method
+* **Top payment methods:** Credit Card, PayPal, Debit Card
+* Digital payments dominate the checkout process.
+- Customers prefer **fast digital checkout experiences**.
+
+**Recommendation**
+- Optimize checkout for: mobile payments, digital wallets
+
+#### Profit by Channel
+
+* **Profit distribution:** Website ~45%, Mobile App ~38%, Marketplace ~11%, Social Commerce ~6%
+- Website and Mobile App generate **over 80% of total profit**.
+
+**Recommendation**
+- Focus product launches and promotions on: website, mobile app
+
+#### Product-level Issues
+- Some products show: negative profit, 100% return rate (Dolls Variant-4, Smart Watch Variant-1) 
+- These products likely suffer from: quality problems, incorrect pricing, poor product descriptions
+
+**Recommendation**
+* discontinue or fix these products
+* review supplier contracts
+
+### Customer Insights Dashboard (Image 'Customer Insights')
+#### Key metrics:
+* Customers: 734
+* ARPU: 323
+* Estimated CLV: 5.13
+
+#### Customer Purchase Frequency
+- Most customers make multiple purchases.
+- The business has: strong repeat purchase behavior, good customer loyalty
+
+**Recommendation**
+- Introduce: loyalty programs, membership rewards to increase repeat purchases.
+
+#### Top Customers by Lifetime Value
+- Top customers generate significantly higher revenue: Customer C-0797: 589 revenue
+- High-value customers contribute disproportionately to revenue.
+
+**Recommendation**
+- Create VIP customer programs.
+
+#### Profit Margin by Customer Segment
+- VIP customers generate more than double the margin of standard customers.
+- Premium customers: purchase more frequently, buy higher-margin products
+
+**Recommendation**
+Prioritize VIP retention and personalized marketing.
+
+### Overall Strategic Insights
+1. Focus on profitable categories
+
+- Promote:
+    * Home & Kitchen
+    * Food & Beverage
+    * Electronics
+
+2. Grow Mobile App channel
+
+- Mobile app users have:
+    * higher profit per order
+    * better loyalty
+
+3. Reduce product returns
+
+- Improve:
+    * product descriptions
+    * size guides
+    * product quality
+
+
+4. Optimize marketing budget
+
+- Best platforms:
+    * Influencer
+    * Google Ads
+    * Instagram Ads
+
+- Reduce spending on:
+    * TikTok Ads
+    * Email Marketing
+
+5. Invest in loyal customers
+- High-value segments drive most profit.
+- Introduce:
+    * VIP rewards
+    * loyalty programs
+    * personalized marketing
+
