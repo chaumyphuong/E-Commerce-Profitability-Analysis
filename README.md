@@ -16,9 +16,10 @@ BrightCart is an online retailer selling products across 8 categories through th
 - If the CEO asked you to cut 20% of the marketing budget, which platforms and months would you recommend reducing spend on? Support your recommendation with data.
 
 ## Tech Stack include:
-- SQL
-- Pandas
-- Excel
+- SQL (MySQL)
+- IPython Notebook (Google Colab)
+- Excel 
+- Visualisation (PowerBI)
 
 ## Introduce steps
 **Workflow**
