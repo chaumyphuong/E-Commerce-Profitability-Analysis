@@ -8,6 +8,9 @@ I am a financial analyst at a direct-to-consumer e-commerce brand that sells pro
 ## ABOUT COMPANY:
 BrightCart is an online retailer selling products across 8 categories through their website, mobile app, third-party marketplaces, and social commerce. The company did $1M+ in gross revenue over the past two years, but net margins have been shrinking. The CEO wants to know which product categories and sales channels are truly profitable after all costs, which marketing platforms are delivering the best return on ad spend, and whether the return rate is eating into margins. You have three datasets: order-level transactions, a product catalog with cost data, and monthly marketing spend by platform.
 
+## 1. Business Problem
+Although the company has generated over $1M in gross revenue over the past two years, the CEO has noticed that net profit margins have been declining. The leadership team suspects that some product categories, sales channels, and marketing platforms may not actually be profitable after considering operational costs. The objective of this project is to perform a true profitability analysis to identify where the company is making money and where it is losing money.
+
 ## Questions to Answer
 - What is the average profit margin by product category? Which categories are the most and least profitable, and what is driving the difference (product cost, shipping, returns, or discounts)?
 - How does profitability differ across sales channels (Website, Mobile App, Marketplace, Social Commerce)? Which channel has the best and worst profit per order after accounting for platform fees?
@@ -15,15 +18,32 @@ BrightCart is an online retailer selling products across 8 categories through th
 - Analyze the marketing spend data: Which advertising platform delivers the best ROAS (Return on Ad Spend)? Are there any platforms where the company is spending money but not getting a positive return?
 - If the CEO asked you to cut 20% of the marketing budget, which platforms and months would you recommend reducing spend on? Support your recommendation with data.
 
-## Tech Stack include:
-- SQL (MySQL)
-- IPython Notebook (Google Colab)
-- Excel 
-- Visualisation (PowerBI)
+## Tech Stack
+This project uses the following tools:
+- SQL (MySQL) – Data querying and aggregation
+- Python (Pandas, NumPy) – Data exploration and cleaning
+- Excel – Data validation
+- Power BI – Interactive dashboard visualization
+- Google Colab / Jupyter Notebook – Analysis environment
 
-## Introduce steps
-**Workflow**
-Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) -> SQL Analysis -> Dashboard
+## Project Workflow
+The analysis pipeline follows the workflow below:
+
+Raw CSV Data
+      ↓
+Data Import (SQL)
+      ↓
+Data Exploration
+      ↓
+Data Cleaning
+      ↓
+Data Modeling (Star Schema)
+      ↓
+SQL Analysis
+      ↓
+Power BI Dashboards
+      ↓
+Business Insights & Recommendations
 
 ### 1. Import and Explore
 - Load all three CSVs.
@@ -49,7 +69,7 @@ Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) ->
 - Create a one-page summary with your top 3 recommendations for improving profitability.
 - Include specific numbers (e.g., cutting X platform saves $Y with minimal revenue impact).
 
-## 1. Introduce data
+## 1. Dataset Overview
 ### Raw data description
 **Data set:**
 - marketing_spend.csv: Monthly ad spend and engagement metrics by platform.
@@ -130,6 +150,23 @@ Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) ->
 
 ## 3. Data Modeling
 ### ERD
+A star schema was designed to support efficient analysis.
+**Dimension Tables**
+- dim_order – Order metadata
+- dim_customer – Customer information
+- dim_products – Product catalog
+- dim_platform – Marketing platforms
+
+**Fact Tables**
+- fact_orders_details – Transaction-level sales and cost data
+- fact_marketing – Monthly marketing performance
+
+This structure enables flexible analysis across:
+- products
+- customers
+- channels
+- marketing platforms
+- time periods
 
 ### Entities description
 **dim_order**
@@ -222,160 +259,59 @@ Raw CSV -> Import SQL -> Explore Data -> Data Cleaning -> Data Modeling (ERD) ->
 | roas               | Return on ad spend                           |
 
 ## 4. Visualisation and Insight
-### Overview Dashboard (Image 'Overview')
-#### Key metrics
-* Total Orders: 2K
-* Customers: 734
-* Revenue: 236.88K
-* Average Order Value: 118.44
-* ROAS: 2.29K 
+**Dashboard Overview**
 
-#### Profit Margin by Category
-* Home & Kitchen has the highest profit margin (~33%).
-* Food & Beverage and Electronics also generate strong margins (~29% and ~28%).
-* Sports and Toys have noticeably lower margins (~22%).
-* Household and daily-use products have stable demand and healthy margins.
-* Electronics generate strong revenue but higher logistics or cost structures reduce margin.
+The analysis results are presented in Power BI dashboards. Main dashboards include:
+- Business Overview Dashboard
+- Marketing Performance Dashboard
+- Product & Sales Detail Dashboard
+- Customer Insights Dashboard
 
-**Recommendation**
-* Increase promotion for Home & Kitchen and Food & Beverage.
-* Optimize supplier cost or shipping for Electronics and Sports.
+**Key Metric**
+- Revenue = Gross Revenue - Discounts
+- Net Revenue = Gross Revenue - Discounts - Refunds
+- Profit = Net Revenue - Total Costs
+- Profit Margin = Profit / Net Revenue
+- ROAS = Revenue Attributed / Marketing Spend
+- Return Rate = Returned Orders / Total Orders
 
-#### Profit per Order by Channel
-- Mobile App generates the highest profitability per order, while Marketplace produces the lowest.
-* Marketplace platforms charge commission fees.
-* Mobile users tend to be more loyal and repeat customers.
+### Overview Dashboard 
+**Key Insights**
+- The business generated $236.88K in net revenue and $56.54K in profit, resulting in an overall profit margin of ~24%.
+- Electronics is the largest revenue contributor ($70K+), but also shows the highest return rate (24.2%), which significantly impacts profitability.
+- Home & Kitchen and Food & Beverage categories demonstrate more stable profit margins, suggesting stronger operational efficiency.
+- Several products show 100% return rates, indicating potential product quality issues or mismatched customer expectations.
 
-**Recommendation**
-* Invest in mobile-app growth strategies
-* Reduce dependency on marketplace channels
+**Business Recommendation**
+- Focus on reducing return rates in Electronics and reviewing unprofitable SKUs to improve overall margins.
 
-#### ROAS by Month and Platform
-- ROAS fluctuates significantly across months and platforms.
-* Influencer campaigns often produce high ROAS spikes
-* Some platforms show unstable performance month-to-month
-- Marketing effectiveness depends heavily on: campaign timing, platform selection
+### Category & Product Performance
+**Key Insights**
+- Electronics leads in revenue but suffers from the highest return rate, which reduces its profit contribution.
+- Home & Kitchen and Food & Beverage generate consistent profit with relatively low return rates, making them reliable revenue drivers.
+- Certain SKUs show negative profit and extremely high return rates, highlighting possible problems with product quality, pricing strategy, or supplier reliability.
 
-**Recommendation**
-* Allocate more budget to consistently high-performing platforms
-* Reduce spend during low-ROAS months
+**Business Recommendation**
+- Prioritize marketing and inventory for high-margin categories, while reviewing or discontinuing low-performing products.
+### Channel Performance Analysis
+**Key Insights**
+- Mobile App generates the highest profit per order (~$36), indicating strong customer engagement and higher purchasing intent.
+- Website also performs well with stable revenue and profit margins.
+- Marketplace channels show lower profit per order (~$15) due to platform fees and higher competitive pricing.
+- Social Commerce provides moderate profitability but relies heavily on marketing efforts.
 
-#### Return Rate by Category
+**Business Recommendation**
+- Shift customer acquisition toward owned channels (Mobile App & Website) to maximize profitability and reduce dependency on marketplaces.
 
-* **Highest return categories:** Electronics (~24%), Clothing (~16%)
-* **Lowest return categories:** Toys (~5%)
-* **High returns often occur in:** size-sensitive items, complex products, high-price items
+### Marketing & Customer Insights
+**Key Insights**
+- Total marketing spend reached $503K, generating $12.75M in attributed revenue, with an overall ROAS of 2.29.
+- Influencer Marketing and Google Ads demonstrate higher marketing efficiency and strong conversion potential.
+- Email Marketing shows high spending but comparatively lower efficiency, suggesting diminishing returns.
+- Revenue is highly concentrated among VIP and Loyal customers, who generate significantly higher profit margins than standard customers.
 
-**Recommendation**
-* Improve product descriptions
-* add size guides
-* improve product images
-- Reducing returns can significantly increase profit margins
-
-### Marketing Performance Dashboard (Image 'Marketing Performance')
-#### Key metrics:
-* Marketing Spend: 503K
-* Conversions: 112K
-* Revenue from marketing: 12.75M 
-
-#### Spend vs Revenue Trend
-- Some months generate very high revenue relative to spend. (March and September spikes)
-- These months likely include: seasonal campaigns, promotional events, holiday sales
-
-**Recommendation**
-- Increase marketing spend during historically high-ROI months.
-
-#### Platform Performance
-* Facebook Ads and Influencer marketing generate the highest conversions.
-* Email marketing produces very few conversions relative to effort.
-- Email campaigns might: target inactive audiences, lack personalization
-
-**Recommendation**
-* Improve segmentation for email marketing
-* Prioritize social advertising channels
-
-#### Marketing Funnel
-* Impressions: 76.59M
-* Clicks: 2.25M
-* Conversions: 0.11M
-- Major drop-off occurs between: clicks, conversions
-- Possible causes: weak landing pages, complicated checkout process, poor product pages
-
-**Recommendation**
-- Improve: landing page UX, checkout speed, mobile optimization
-
-#### Revenue by Marketing Platform
-
-* **Highest revenue contributors:** Email Marketing, Influencer Marketing, Google Ads
-- Email generates high revenue but also requires very high spending, making efficiency lower.
-
-**Recommendation**
-- Focus on: Influencer, Google Ads, Instagram Ads
-- These platforms provide better ROAS efficiency.
-
-### Product & Sales Detail Dashboard (Image 'Product & Sales Detail Dashboard')
-#### Key metrics:
-* Net Revenue: 236.88K
-* Profit: 56.54K
-* Return Rate: 7% 
-
-#### Top Revenue Categories
-* **Leading categories:** Electronics, Home & Kitchen, Food & Beverage
-- These categories drive the majority of total revenue.
-
-**Recommendation**
-- Increase: inventory, promotions bundles
-
-#### Revenue by Payment Method
-* **Top payment methods:** Credit Card, PayPal, Debit Card
-* Digital payments dominate the checkout process.
-- Customers prefer **fast digital checkout experiences**.
-
-**Recommendation**
-- Optimize checkout for: mobile payments, digital wallets
-
-#### Profit by Channel
-
-* **Profit distribution:** Website ~45%, Mobile App ~38%, Marketplace ~11%, Social Commerce ~6%
-- Website and Mobile App generate **over 80% of total profit**.
-
-**Recommendation**
-- Focus product launches and promotions on: website, mobile app
-
-#### Product-level Issues
-- Some products show: negative profit, 100% return rate (Dolls Variant-4, Smart Watch Variant-1) 
-- These products likely suffer from: quality problems, incorrect pricing, poor product descriptions
-
-**Recommendation**
-* discontinue or fix these products
-* review supplier contracts
-
-### Customer Insights Dashboard (Image 'Customer Insights')
-#### Key metrics:
-* Customers: 734
-* ARPU: 323
-* Estimated CLV: 5.13
-
-#### Customer Purchase Frequency
-- Most customers make multiple purchases.
-- The business has: strong repeat purchase behavior, good customer loyalty
-
-**Recommendation**
-- Introduce: loyalty programs, membership rewards to increase repeat purchases.
-
-#### Top Customers by Lifetime Value
-- Top customers generate significantly higher revenue: Customer C-0797: 589 revenue
-- High-value customers contribute disproportionately to revenue.
-
-**Recommendation**
-- Create VIP customer programs.
-
-#### Profit Margin by Customer Segment
-- VIP customers generate more than double the margin of standard customers.
-- Premium customers: purchase more frequently, buy higher-margin products
-
-**Recommendation**
-Prioritize VIP retention and personalized marketing.
+**Business Recommendation**
+- Optimize marketing allocation toward high-performing channels and develop loyalty programs targeting high-value customers.
 
 ### Overall Strategic Insights
 1. Focus on profitable categories
@@ -417,3 +353,10 @@ Prioritize VIP retention and personalized marketing.
     * loyalty programs
     * personalized marketing
 
+## Project Value
+This project demonstrates how data analytics can support business decisions by:
+- Identifying profitable products and channels
+- Optimizing marketing budget allocation
+- Reducing operational inefficiencies
+- Improving customer retention strategies
+- The insights generated help leadership maximize profitability while maintaining revenue growth.
